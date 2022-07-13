@@ -1,0 +1,149 @@
+```{r}
+
+################################################################################
+## R Basics Assignment #1 - Titanic passenger list 
+## Date: 01-03-21
+################################################################################
+
+
+############
+# Notation #
+############
+# :) Good Practice
+# :( Poor Practice
+# *( Not Working
+
+
+##################
+# Initialization #
+##################
+rm(list = ls()) # :) remove all variables from global environment
+cat("\014") # clear the screen
+
+
+################
+# Get the data #
+################
+## Check where is the currently working directory path
+getwd()
+## Change the working directory if necessary
+#setwd("C:\\Users\\Anat\\\R_Code_and_Data")
+## Create file path
+file_path = file.path(getwd(),"titanic_dataset.csv") # :) construct platform independent path
+## Read the csv file into data.frame
+dataset = read.csv("titanic_dataset.csv", na.strings="")
+head(dataset,5) # Show the first 5 rows of the dataset
+
+
+#######################
+# Data pre-processing #
+#######################
+## Convert "Survived" into factor variable
+class(dataset$Survived)
+dataset[,"Survived"] = factor(dataset[,"Survived"], levels=c(0,1), labels=c("No","Yes")) # :) robust to col location changes
+#dataset$Survived     = factor(dataset[,"Survived"], levels=c(0,1), labels=c("No","Yes")) # 
+#dataset[,16]         = factor(dataset[,"Survived"], levels=c(0,1), labels=c("No","Yes")) # :( col number might change
+class(dataset$Survived) # Validate the change; should print "factor"
+
+```
+
+```{r}
+
+#######################
+# Dataset exploration #
+#######################
+dim(dataset)     # Dimensions of the dataset
+str(dataset)     # Structure of the dataset
+summary(dataset) # 5 Five-number summary + mean
+
+```
+
+```{r}
+
+
+##############
+# Question 1 #
+##############
+## How many males and females are on board?
+
+# ********* WRITE YOUR CODE HERE************
+
+## Show a bar plot titled "Passenger gender distribution" that presents the number of passengers by gender
+
+# ********* WRITE YOUR CODE HERE************
+
+```
+
+```{r}
+
+##############
+# Question 2 #
+##############
+## How many kids (passengers under the age 18) are on board?
+
+# ********* WRITE YOUR CODE HERE ************
+
+```
+
+```{r}
+
+##############
+# Question 3 #
+##############
+## How many males and females kids are on board?
+
+# ********* WRITE YOUR CODE HERE************
+
+## display a bar plot titled "Children gender distribution (without adults)"
+
+# ********* WRITE YOUR CODE HERE************
+
+```
+
+```{r}
+
+##############
+# Question 4 #
+##############
+## Display the tickets costs for the different classes, use a boxplot entitled "Fare Box Plot"
+
+# ********* WRITE YOUR CODE HERE************
+
+```
+
+```{r}
+
+##############
+# Question 5 #
+##############
+## Who were the passengers who traveled for free (Fare == 0)? What are their honor titles?
+
+# ********* WRITE YOUR CODE HERE************
+```
+
+```{r}
+
+##############
+# Question 6 #
+##############
+## What are the most outrageous ticket prices the passengers paid (outliers)?
+## see https://en.wikipedia.org/wiki/Outlier. Calculate the outlier range using Tukey's fences and ticket prices above it. 
+
+# ********* WRITE YOUR CODE HERE************
+```
+
+```{r}
+
+##############
+# Question 7 #
+##############
+## What are the costs of first class tickets?
+
+# ********* WRITE YOUR CODE HERE************
+
+## display a histogram entitled "1st class fare"
+
+
+## display a histogram entitled 1st class log fare" (add 1 to the price to avoid log(0)=-Inf)
+
+# ********* WRITE YOUR CODE HERE************
